@@ -189,13 +189,24 @@
   <h2 class="section-title">Coaching &amp; Services</h2>
   <p class="section-body">Not a trainer with a certificate and a gym selfie. Someone who&rsquo;s doing it right now, at 40, with a full schedule and zero excuses.</p>
   <p class="section-body" style="margin-top:1.5rem;">Ready to work together? Fill out the form below or email directly: <a href="mailto:Strangejordan@gmail.com" style="color:#d4a853; text-decoration:none;">Strangejordan@gmail.com</a></p>
-  <form class="contact-form" id="contact-form" action="https://formspree.io/f/xpwzgkqd" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <textarea name="message" placeholder="Tell me about your goals — where you're at, what you're struggling with, what you want to achieve." required></textarea>
-    <button type="submit">Send Message</button>
-    <p class="form-success" id="form-success">Message sent! I'll get back to you soon.</p>
+  <div data-fs-success style="display:none; color:#d4a853; font-size:0.95rem; margin-top:2rem;">Message sent! I'll get back to you soon.</div>
+  <div data-fs-error style="display:none; color:#e05c5c; font-size:0.85rem; margin-top:1rem;"></div>
+
+  <form class="contact-form" id="contact-form">
+    <input type="text" name="name" placeholder="Your Name" required data-fs-field>
+    <span data-fs-error="name" style="color:#e05c5c; font-size:0.8rem; margin-top:-0.5rem;"></span>
+    <input type="email" name="email" placeholder="Your Email" required data-fs-field>
+    <span data-fs-error="email" style="color:#e05c5c; font-size:0.8rem; margin-top:-0.5rem;"></span>
+    <textarea name="message" placeholder="Tell me about your goals — where you're at, what you're struggling with, what you want to achieve." required data-fs-field></textarea>
+    <span data-fs-error="message" style="color:#e05c5c; font-size:0.8rem; margin-top:-0.5rem;"></span>
+    <button type="submit" data-fs-submit-btn>Send Message</button>
   </form>
+
+  <script>
+    window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+    formspree('initForm', { formElement: '#contact-form', formId: 'xrevqdew' });
+  </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
   <div class="coaching-grid">
     <div class="coaching-card">
       <div class="icon">&#9656;</div>
@@ -373,19 +384,6 @@ function calcTDEE() {
   }, { rootMargin: '-40% 0px -55% 0px' });
   sections.forEach(s => observer.observe(s));
 
-  // Contact form success message
-  const form = document.getElementById('contact-form');
-  if (form) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const data = new FormData(form);
-      const res = await fetch(form.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
-      if (res.ok) {
-        form.reset();
-        document.getElementById('form-success').style.display = 'block';
-      }
-    });
-  }
 </script>
 </body>
 </html>
