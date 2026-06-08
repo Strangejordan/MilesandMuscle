@@ -55,8 +55,11 @@
     .nav-links a { padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); width: 100%; }
     .nav-links a:last-child { border-bottom: none; }
   }
-  .hero { min-height: 92vh; display: flex; flex-direction: column; justify-content: center; padding: 4rem 2rem 2rem; position: relative; overflow: hidden; background: url('hero.jpg') center center / cover no-repeat; }
-  .hero-bg { position: absolute; inset: 0; background: linear-gradient(to right, rgba(14,14,14,0.92) 50%, rgba(14,14,14,0.5) 100%); }
+  .hero { min-height: 92vh; display: flex; flex-direction: column; justify-content: center; padding: 4rem 2rem 2rem; position: relative; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 50%, rgba(212,168,83,0.06) 0%, transparent 60%); }
+  .hero-img { position: absolute; right: 0; top: 0; height: 100%; width: 50%; object-fit: cover; object-position: center top; }
+  .hero-img-fade { position: absolute; right: 0; top: 0; height: 100%; width: 55%; background: linear-gradient(to right, #0e0e0e 0%, transparent 40%); }
+  @media (max-width: 768px) { .hero-img, .hero-img-fade { display: none; } }
   .hero-eyebrow { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d4a853; margin-bottom: 1.2rem; }
   .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 10vw, 7rem); line-height: 0.95; letter-spacing: 0.02em; max-width: 700px; margin-bottom: 1.5rem; }
   .hero h1 em { font-style: normal; color: #d4a853; }
@@ -130,6 +133,8 @@
 
 <section class="hero">
   <div class="hero-bg"></div>
+  <img src="hero.jpg" alt="Jordan Strange training" class="hero-img">
+  <div class="hero-img-fade"></div>
   <div class="hero-eyebrow">Northeast Ohio &middot; Est. February 2, 2026</div>
   <h1>No Excuses.<br><em>Just Miles</em><br>&amp; Muscle.</h1>
   <p class="hero-sub">Raw, unfiltered footage from a 40-year-old Air Force veteran building a leaner, stronger life &mdash; one mile at a time on a rural Ohio property.</p>
